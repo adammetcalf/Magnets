@@ -55,7 +55,7 @@ Bx2 = mu0/(4*pi) * (3*(m2(1)*rx2 + m2(2)*ry2 + m2(3)*rz2).*rx2 - m2(1))./r2.^3;
 By2 = mu0/(4*pi) * (3*(m2(1)*rx2 + m2(2)*ry2 + m2(3)*rz2).*ry2 - m2(2))./r2.^3;
 Bz2 = mu0/(4*pi) * (3*(m2(1)*rx2 + m2(2)*ry2 + m2(3)*rz2).*rz2 - m2(3))./r2.^3;
 
-% Calculate field components for the thrid dipole
+% Calculate field components for the third dipole
 x3 = x - p3(1);
 y3 = y - p3(2);
 z3 = z - p3(3);
@@ -102,7 +102,7 @@ Bx_total = Bx1 + Bx2 + Bx3 + Bx4 + Bx5;
 By_total = By1 + By2 + By3 + By4 + By5;
 Bz_total = Bz1 + Bz2 + Bz3 + Bz4 + Bz5;
 
-% Find indices for each dipole
+% Find meshgrid indices for each dipole
 [idx1, idy1, idz1] = findClosestGridPoint(x, y, z, p1);
 [idx2, idy2, idz2] = findClosestGridPoint(x, y, z, p2);
 [idx3, idy3, idz3] = findClosestGridPoint(x, y, z, p3);
@@ -117,9 +117,9 @@ Bz_total = Bz1 + Bz2 + Bz3 + Bz4 + Bz5;
 
 % Calculate Torques Dipole1
 T1_2 = f_getTorque(Bx2,By2,Bz2,idx1, idy1, idz1, m1);
-T1_3 = f_getTorque(Bx3,By3,Bz3,idx1, idy1, idz1,m1);
-T1_4 = f_getTorque(Bx4,By4,Bz4,idx1, idy1, idz1,m1);
-T1_5 = f_getTorque(Bx5,By5,Bz5,idx1, idy1, idz1,m1);
+T1_3 = f_getTorque(Bx3,By3,Bz3,idx1, idy1, idz1, m1);
+T1_4 = f_getTorque(Bx4,By4,Bz4,idx1, idy1, idz1, m1);
+T1_5 = f_getTorque(Bx5,By5,Bz5,idx1, idy1, idz1, m1);
 
 % Sum the torques to get the total torque on dipole 1
 torque1 = T1_2+ T1_3 + T1_4+ T1_5;
@@ -263,9 +263,4 @@ ylabel('Y-axis');
 zlabel('Z-axis');
 title('Components of Magnetic Forces on Dipoles');
 
-% Function to find the closest grid point
-function [idx, idy, idz] = findClosestGridPoint(x, y, z, p)
-    [~, idx] = min(abs(x(1,:,1) - p(1)));
-    [~, idy] = min(abs(y(:,1,1) - p(2)));
-    [~, idz] = min(abs(z(1,1,:) - p(3)));
-end
+
