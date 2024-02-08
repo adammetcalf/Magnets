@@ -70,7 +70,7 @@ sx = 0; % Slice along X at x=0
 sy = 0; % Slice along Y at y=0
 sz = [min(z(:)) max(z(:))]; % Slices along Z covering the full range
 slice(x, y, z, gradB_magnitude, sx, sy, sz);
-shading interp; % Interpolates colors across faces of slice (optional)
+shading interp; % Interpolates colors across faces of slice
 colorbar; % Show color scale
 xlabel('X-axis');
 ylabel('Y-axis');
@@ -80,7 +80,7 @@ title('3D Visualization of the Gradient Magnitude of the Magnetic Field');
 
 % Set up the figure for animation
 figure(5);
-colormap jet; % Set the colormap (optional)
+colormap jet; % Set the colormap
 
 % Define fixed axis limits based on your data range
 xLimits = [min(x(:)), max(x(:))];
@@ -91,7 +91,7 @@ zLimits = [min(z(:)), max(z(:))];
 zSlices = linspace(min(z(:)), max(z(:)), 50); % Define z-slices to animate through
 nFrames = length(zSlices);
 
-% Prepare VideoWriter if you wish to save the animation
+% Prepare VideoWriter
 v = VideoWriter('magnetic_field_gradient_animation.avi');
 open(v);
 
@@ -137,7 +137,7 @@ close(v);
 
 % Set up the figure for animation x axis
 figure(6);
-colormap jet; % Set the colormap (optional)
+colormap jet; % Set the colormap 
 
 % Define fixed axis limits based on your data range
 xLimits = [min(x(:)), max(x(:))];
@@ -173,7 +173,7 @@ for i = 1:nFrames
     ylim(yLimits);
     zlim(zLimits);
     
-    % Optionally, fix the color axis for consistent coloring
+    % fix the color axis for consistent coloring
     clim([min(gradB_magnitude(:)), max(gradB_magnitude(:))]);
 
     % Adjust the alpha value for each slice
@@ -193,7 +193,7 @@ close(v);
 
 % Set up the figure for animation x axis
 figure(7);
-colormap jet; % Set the colormap (optional)
+colormap jet; % Set the colormap
 
 % Define fixed axis limits based on your data range
 xLimits = [min(x(:)), max(x(:))];
@@ -229,7 +229,7 @@ for i = 1:nFrames
     ylim(yLimits);
     zlim(zLimits);
     
-    % Optionally, fix the color axis for consistent coloring
+    % fix the color axis for consistent coloring
     clim([min(gradB_magnitude(:)), max(gradB_magnitude(:))]);
 
     % Adjust the alpha value for each slice
@@ -251,7 +251,7 @@ close(v);
 
 % Set up the figure for animation
 figure(8);
-colormap jet; % Set the colormap (optional)
+colormap jet; % Set the colormap
 
 % Define fixed axis limits based on your data range
 xLimits = [min(x(:)), max(x(:))];
@@ -291,7 +291,7 @@ for i = 1:nFrames
     ylim(yLimits);
     zlim(zLimits);
     
-    % Optionally, fix the color axis for consistent coloring
+    % fix the color axis for consistent coloring
     clim([min(gradB_magnitude(:)), max(gradB_magnitude(:))]);
     
     % Adjust the alpha value for each slice
@@ -311,6 +311,4 @@ end
 % Close the video file
 close(v);
 
-% Inform the user
-disp('Animation completed and saved as magnetic_field_gradient_animation_xyz-axis_transparent.avi');
 
