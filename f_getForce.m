@@ -1,5 +1,4 @@
 function force = f_getForce(Bx, By, Bz, x_index, y_index, z_index, m, dx, dy, dz)
-
 %dx, dy, dz are the grid spacings in the x, y, and z directions, respectively.
 
 
